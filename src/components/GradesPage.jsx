@@ -1,5 +1,10 @@
 import { useState } from "react";
 
+const gradeToClassName = (grade) => {
+  const normalized = grade.toLowerCase().replace("+", "plus").replace("-", "minus");
+  return normalized;
+};
+
 export default function GradesPage({ students }) {
   const [selectedStudent, setSelectedStudent] = useState(1);
 
@@ -65,7 +70,7 @@ export default function GradesPage({ students }) {
             </div>
             <div className="grade-footer">
               <span className="marks">{grade.marks}/{grade.outOf}</span>
-              <span className={`grade-badge grade-${grade.grade.toLowerCase()}`}>
+              <span className={`grade-badge grade-${gradeToClassName(grade.grade)}`}>
                 {grade.grade}
               </span>
             </div>
